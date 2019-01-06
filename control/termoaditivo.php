@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER["DOCUMENT_ROOT"]."/tce/modelo/termoaditivo.php";
+    require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/model/termoaditivo.php";
 
     if(isset($_POST["acao"])) {
         if ($_POST["acao"]=="excluir"){

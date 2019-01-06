@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER["DOCUMENT_ROOT"]."/tce/modelo/unidadegestora.php";
+    require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/model/unidadegestora.php";
 
     if(isset($_POST["acao"])) {
         if ($_POST["acao"]=="excluir"){

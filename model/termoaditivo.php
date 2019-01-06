@@ -1,5 +1,5 @@
 <?php
-    require $_SERVER["DOCUMENT_ROOT"]."/tce/infraestrutura/auxiliar.php";
+    require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/structure/auxiliar.php";
 
     function cadastrar($cpf_jogador, $nome, $posicao, $data_inicio, $data_fim) {
         $conexao = conectar();
