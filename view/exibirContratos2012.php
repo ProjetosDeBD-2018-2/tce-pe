@@ -91,7 +91,7 @@
                               <td>".$value["cpf_cnpj"]."</td>
                               <td>".$value["vigencia"]."</td>
                               <td>".$value["objeto"]."</td>
-                              <td>".$value["valorcontrato"]."</td>
+                              <td>R$".number_format($value["valorcontrato"],2,",",".")."</td>
                               <td>".$value["estagiocontrato"]."</td>
                               <td>".$value["situacaocontrato"]."</td>
                             </tr>";

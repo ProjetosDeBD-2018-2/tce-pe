@@ -1,5 +1,13 @@
 <?php
     require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/control/termoAditivo.php";
+
+    function formatValues($value){
+      if ($value != 0){
+        return  "R$".number_format($value,2,",",".");
+      }else {
+        return null;
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -85,14 +93,15 @@
                 echo "<tr><td class='text-center' colspan='6'>Nenhum registro</td></tr>";
             } else {
                 foreach ($dados as $value) {
+                  
                 echo "<tr>
                             <td>".$value["numerotermoaditivo"]."</td>
                             <td>".$value["numerocontrato"]."</td>
                             <td>".$value["anocontrato"]."</td>
                             <td>".$value["justificativatermoaditivo"]."</td>
-                            <td>".$value["valortermoaditivo"]."</td>
-                            <td>".$value["valoracrescimo"]."</td>
-                            <td>".$value["valorreducao"]."</td>
+                            <td>".formatValues($value["valortermoaditivo"])."</td>
+                            <td>".formatValues($value["valoracrescimo"])."</td>
+                            <td>".formatValues($value["valorreducao"])."</td>
                             
                       </tr>";
                   }

@@ -85,13 +85,14 @@
                   echo "<tr><td class='text-center' colspan='3'>Nenhum registro</td></tr>";
               } else {
                   foreach ($dados as $value) {
+                     
                       echo "<tr>
                               <td>".$value["numerocontrato"]."</td>
                               <td>".$value["anocontrato"]."</td>
                               <td>".$value["cpf_cnpj"]."</td>
                               <td>".$value["vigencia"]."</td>
                               <td>".$value["objeto"]."</td>
-                              <td>".$value["valorcontrato"]."</td>
+                              <td>R$".number_format($value["valorcontrato"],2,",",".")."</td>
                               <td>".$value["estagiocontrato"]."</td>
                               <td>".$value["situacaocontrato"]."</td>
                             </tr>";

@@ -86,8 +86,11 @@ require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/control/unidadegestora.php";
                 echo "<tr><td class='text-center' colspan='3'>Nenhum registro</td></tr>";
             } else {
                 foreach ($dados as $value) {
+                $CNPJ = $value["cnpj"];
+                $CNPJ = preg_replace("/([0-9]{2})([0-9]{3})([0-9]{3})([0-9]{4})([0-9]{2})/", "$1.$2.$3/$4-$5", $CNPJ);
+                
                 echo "<tr>
-                            <td>".$value["cnpj"]."</td>
+                            <td>".$CNPJ."</td>
                             <td>".$value["orgao"]."</td>
                             <td>".$value["sigla"]."</td>
                             <td>".$value["esfera"]."</td>
