@@ -1,6 +1,8 @@
 <?php
     require $_SERVER["DOCUMENT_ROOT"]."/tce-pe/control/contrato.php";
+    
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +65,32 @@
             
             <div class="subheading mb-5">UFRPE · DEINFO · BSI · Projeto de Banco de Dados 2018.2
             </div>
-          <h2 class="mb-5">Todos os contratos</h2>
+            <h2 class="mb-5">Todos os contratos</h2>
+            <div style = "margin-bottom:15px;"> 
+              <form id="searchBox" action="exibirTodosContratos.php" method="GET">
+                <input class="custom-select" style="background:none;width:30%; margin-right:3%" type='text' name='cnpj' placeholder = "Buscar por CPF/CNPJ">
+                <select class="custom-select" style="width:18%;margin-right:3%" name="estagio" form="searchBox">
+                  <option value="null" disabled selected>Qualquer Estágio</option>
+                  <option value="Em Execu??o">Em execução</option>
+                  <option value="Fim de Vig?ncia">Fim da Vigência</option>
+                </select>
+                <select class="custom-select" style="width:23%;margin-right:3%"  name="situacao" form="searchBox">
+                  <option value="null" disabled selected>Qualquer situação</option>
+                  <option value="Regular">Regular</option>
+                  <option value="Conclu?do">Concluído</option>
+                  <option value="Pendente de Pagamento">Pendente de pagamento</option>
+                  <option value="Rescindido por">Rescindido</option>
+                  <option value="Anulado">Anulado Administrativamente</option>
+                  <option value="Suspenso">Suspenso</option>
+                  <option value="Sustado por">Sustado</option>
+                </select>
+                <input class ="custom-select" style="color: white;width: 8%;background: #bd5d30;" type="submit" value="Buscar">
+              </form>
+            </div>
+        </div>
+        <br>
 
+          
           <table class="table table-hover">
               <thead>
                 <tr>
@@ -79,8 +105,25 @@
                 </tr>
               </thead>
               <tbody>
-              <?php
-              $dados = exibeDados();
+              
+              <?php 
+              if (isset($_GET['cnpj'])){
+                $cnpj = $_GET["cnpj"];
+              } else {
+                $cnpj = null;
+              }
+              if (isset($_GET['situacao'])){
+                $situacao = $_GET['situacao'];
+              } else {
+                $situacao = null;
+              }
+              if (isset($_GET['estagio'])){
+                $estagio = $_GET['estagio'];
+              } else {
+                $estagio = null;
+              }
+              $dados = exibeDados($cnpj,$situacao,$estagio);
+              
               if (!$dados) {
                   echo "<tr><td class='text-center' colspan='3'>Nenhum registro</td></tr>";
               } else {

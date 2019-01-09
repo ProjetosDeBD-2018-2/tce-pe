@@ -23,9 +23,13 @@
         }
     }
 
-    function exibeDados(){
-        $sql = "SELECT * FROM contrato";
-
+    function exibeDados($cnpj,$situacao,$estagio){
+        $sql = "select * 
+                from contrato 
+                where 1=1 
+                    and ('$cnpj' = 'null' or ('$cnpj' <> 'null' and cpf_cnpj like '%$cnpj%')) 
+                    and ('$situacao' = 'null' or ('$situacao' <> 'null' and situacaocontrato like '%$situacao%')) 
+                    and ('$estagio' = 'null' or ('$estagio' <> 'null' and estagiocontrato like '%$estagio%'))";
         $resultado = exibir($sql);
 
         if ($resultado['total'] > 0) {
